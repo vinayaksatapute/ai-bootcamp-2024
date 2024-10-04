@@ -1,0 +1,14 @@
+# Environment
+.env
+
+# Python cache files
+__pycache__
+__pycache__/
+
+
+#debugger details
+.vscode
+.vscode/
+
+# Ignore the virtual envrionment setup
+st_venv/
