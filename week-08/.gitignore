@@ -12,6 +12,7 @@ __pycache__/
 
 # Ignore the virtual envrionment setup
 st_venv/
+st_venv1/
 
 
 # Distribution / packaging
