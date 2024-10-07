@@ -1,15 +1,18 @@
 import os
+import streamlit as st
 from dotenv import load_dotenv
 from openai import OpenAI
 import tiktoken
-import streamlit as st
-from helper_functions.utility import check_password
 
 
-load_dotenv('.env')
+if load_dotenv('.env'):
+   OPENAI_KEY = os.getenv('OPENAI_API_KEY')
+else:
+   OPENAI_KEY = st.secrets('OPENAI_API_KEY')
+
 
 # Pass the API Key to the OpenAI Client
-client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+client = OpenAI(api_key=OPENAI_KEY)
 
 def get_embedding(input, model='text-embedding-3-small'):
     response = client.embeddings.create(
@@ -17,9 +20,6 @@ def get_embedding(input, model='text-embedding-3-small'):
         model=model
     )
     return [x.embedding for x in response.data]
-
-if not check_password():
-   st.stop()
 
 # This is the "Updated" helper function for calling LLM
 def get_completion(prompt, model="gpt-4o-mini", temperature=0, top_p=1.0, max_tokens=1024, n=1, json_output=False):
