@@ -134,5 +134,4 @@ def process_user_message(user_input):
     # Process 3: Generate Response based on Course Details
     reply = generate_response_based_on_course_details(user_input, course_details)
 
-
     return reply, course_details
