@@ -8,7 +8,7 @@ import tiktoken
 if load_dotenv('.env'):
    OPENAI_KEY = os.getenv('OPENAI_API_KEY')
 else:
-   OPENAI_KEY = st.secrets('OPENAI_API_KEY')
+   OPENAI_KEY = st.secrets['OPENAI_API_KEY']
 
 
 # Pass the API Key to the OpenAI Client
