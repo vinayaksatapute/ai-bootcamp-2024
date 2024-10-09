@@ -6,8 +6,8 @@ from logics.customer_query_handler import process_user_message
 from helper_functions.utility import check_password
 
 
-if not check_password():
-   st.stop()
+# if not check_password():
+#    st.stop()
 
 # region <--------- Streamlit App Configuration --------->
 st.set_page_config(
@@ -30,11 +30,11 @@ if form.form_submit_button("Submit"):
     st.divider()
 
     response, course_details = process_user_message(user_prompt)
-    print('LLM Response is: ', response)
+    # print('LLM Response is: ', response)
     st.write(response)
 
     st.divider()
-
+    # print('course details are:', course_details)
     print(course_details)
     df = pd.DataFrame(course_details)
     df

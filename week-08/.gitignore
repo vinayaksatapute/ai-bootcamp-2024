@@ -22,6 +22,9 @@ dist/
 
 # VS Code 
 .vscode/ 
+../.vscode/
+
+../.streamlit/
 # PyCharm 
 .idea/
 

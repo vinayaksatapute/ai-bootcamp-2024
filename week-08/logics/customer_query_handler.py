@@ -1,5 +1,6 @@
 import os
 import json
+from pathlib import Path
 from helper_functions import llm
 
 category_n_course_name = {'Programming and Development': ['Web Development Bootcamp',
@@ -20,8 +21,17 @@ category_n_course_name = {'Programming and Development': ['Web Development Bootc
                                                      'Advanced Creative Writing'],
                           'Design': ['Graphic Design Essentials', 'UI/UX Design Fundamentals']}
 
+# Get the directory of the current script (customer_query_handler.py)
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Go up one level from the 'logics' folder to the 'week-08' folder
+project_dir = os.path.abspath(os.path.join(script_dir, '..'))
+
+# Construct the correct path to 'data/courses-full.json'
+filepath = os.path.join(project_dir, 'data', 'courses-full.json')
+
 # Load the JSON file
-filepath = './data/courses-full.json'
+# filepath = './data/courses-full.json'
 with open(filepath, 'r') as file:
     json_string = file.read()
     dict_of_courses = json.loads(json_string)
@@ -47,7 +57,7 @@ def identify_category_and_courses(user_message):
 
     {category_n_course_name}
 
-    If are no relevant courses are found, output an empty list.
+    If there are no relevant courses are found, output an empty list.
 
     Ensure your response contains only the list of dictionary objects or an empty list, \
     without any enclosing tags or delimiters.
